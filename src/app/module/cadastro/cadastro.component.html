@@ -1,3 +1,13 @@
-<p>
-  cadastro works!
-</p>
+<form [formGroup]="enderecoForm" (ngSubmit)="buscarEndereco()">
+  <div class="mb-3">
+    <label for="cep" class="form-label">CEP</label>
+    <input type="text" class="form-control" id="cep" formControlName="cep" />
+  </div>
+  <button type="submit" class="btn btn-primary">Buscar Endereço</button>
+</form>
+
+<div *ngIf="endereco">
+  <p><strong>Rua:</strong> {{ endereco.logradouro }}</p>
+  <p><strong>Cidade:</strong> {{ endereco.localidade }}</p>
+  <p><strong>Estado:</strong> {{ endereco.uf }}</p>
+</div>

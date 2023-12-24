@@ -1,0 +1,30 @@
+{
+  "enderecos": [
+    {
+      "bairro": "Vigilato Pereira",
+      "cep": "38408-628",
+      "complemento": "",
+      "ddd": "34",
+      "gia": "",
+      "ibge": "3170206",
+      "localidade": "Uberlândia",
+      "logradouro": "Rua Pedro Formoso",
+      "siafi": "5403",
+      "uf": "MG",
+      "numero": "435"
+    },
+    {
+      "cep": "38412-192",
+      "logradouro": "Rua dos Alecrins",
+      "complemento": "Fundos",
+      "bairro": "Cidade Jardim",
+      "localidade": "Uberlândia",
+      "uf": "MG",
+      "ibge": "3170206",
+      "gia": "",
+      "ddd": "34",
+      "siafi": "5403",
+      "numero": "268"
+    }
+  ]
+}

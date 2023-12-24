@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Enderecos } from 'src/app/services/enderecos';
+import { EnderecosService } from 'src/app/services/enderecos.service';
 
 @Component({
   selector: 'app-lista',
@@ -6,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista.component.scss'],
 })
 export class ListaComponent implements OnInit {
-  constructor() {}
+  enderecos: Enderecos[] = [];
 
-  ngOnInit() {}
+  constructor(private service: EnderecosService) {}
+
+  ngOnInit() {
+     this.service.getEnderecos().subscribe({
+      next: (res: any) => {
+        this.enderecos = res;
+        console.log('this.enderecos', this.enderecos)
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    })
+  }
 }

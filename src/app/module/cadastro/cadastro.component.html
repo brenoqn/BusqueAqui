@@ -1,13 +1,100 @@
 <form [formGroup]="enderecoForm" (ngSubmit)="buscarEndereco()">
   <div class="mb-3">
     <label for="cep" class="form-label">CEP</label>
-    <input type="text" class="form-control" id="cep" formControlName="cep" />
+    <input
+      type="text"
+      class="form-control"
+      id="cep"
+      formControlName="cep"
+      placeholder="Digite o CEP"
+    />
   </div>
   <button type="submit" class="btn btn-primary">Buscar Endereço</button>
 </form>
 
 <div *ngIf="endereco">
-  <p><strong>Rua:</strong> {{ endereco.logradouro }}</p>
-  <p><strong>Cidade:</strong> {{ endereco.localidade }}</p>
-  <p><strong>Estado:</strong> {{ endereco.uf }}</p>
+  <div class="mb-3">
+    <label for="categoria" class="form-label">Categoria</label>
+    <select class="form-select" id="categoria" formControlName="categoria">
+      <option value="casa">Casa</option>
+      <option value="trabalho">Trabalho</option>
+      <option value="academia">Academia</option>
+      <option value="igreja">Igreja</option>
+      <option value="outros">Outros</option>
+    </select>
+  </div>
+
+  <div *ngIf="enderecoForm.get('categoria')?.value === 'outros'">
+    <div class="mb-3">
+      <label for="outraCategoria" class="form-label">Outra Categoria</label>
+      <input
+        type="text"
+        class="form-control"
+        id="outraCategoria"
+        formControlName="outraCategoria"
+        placeholder="Digite outra categoria"
+      />
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="logradouro" class="form-label">Rua</label>
+    <input
+      type="text"
+      class="form-control"
+      id="logradouro"
+      placeholder="Rua"
+      [value]="endereco.logradouro || ''"
+      readonly
+    />
+  </div>
+  <div class="mb-3">
+    <label for="cidade" class="form-label">Cidade</label>
+    <input
+      type="text"
+      class="form-control"
+      id="cidade"
+      placeholder="Cidade"
+      [value]="endereco.localidade || ''"
+      readonly
+    />
+  </div>
+  <div class="mb-3">
+    <label for="estado" class="form-label">Estado</label>
+    <input
+      type="text"
+      class="form-control"
+      id="estado"
+      placeholder="Estado"
+      [value]="endereco.uf || ''"
+      readonly
+    />
+  </div>
+  <div *ngIf="enderecoForm.get('numero')">
+    <form [formGroup]="enderecoForm">
+      <div class="mb-3">
+        <label for="numero" class="form-label">Número</label>
+        <input
+          type="text"
+          class="form-control"
+          id="numero"
+          formControlName="numero"
+          placeholder="Número do endereço"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="complemento" class="form-label">Complemento</label>
+        <input
+          type="text"
+          class="form-control"
+          id="complemento"
+          formControlName="complemento"
+          placeholder="Complemento"
+        />
+      </div>
+    </form>
+  </div>
+  <button type="button" class="btn btn-success" (click)="salvarEndereco()">
+    Salvar
+  </button>
 </div>

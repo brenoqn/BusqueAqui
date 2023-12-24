@@ -1,67 +1,66 @@
-<div class="container">
-  <div class="container__title">
-    <img
-      src="../../../assets/icons/logo.svg"
-      class="container__title--img"
-      alt=""
-    />
+<div class="container d-flex flex-column justify-content-center p-2 gap-2">
+
+  <div class="d-flex justify-content-center">
+    <img src="../../../assets/icons/logo.svg" class="img" alt="" />
   </div>
-  <h2>COMO FUNCIONA?</h2>
-  <div class="container__carousel">
-    <div class="container__carousel--card">
-      <div id="carouselIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselIndicators"
-            *ngFor="let item of items; let i = index"
-            [attr.data-bs-slide-to]="i"
-            [class.active]="currentCard === i"
-            [attr.aria-label]="'Slide ' + (i + 1)"
-          ></button>
-        </div>
-        <div class="carousel-inner">
-          <div
-            class="carousel-item"
-            *ngFor="let item of items; let i = index"
-            [ngClass]="{ active: currentCard === i }"
-          >
-            <p>
-              <strong>{{ item.title }}:</strong> {{ item.description }}
-            </p>
-          </div>
-        </div>
+
+  <h4 class="text-center">COMO FUNCIONA?</h4>
+
+  <div class="d-flex justify-content-center">
+    <div id="carouselIndicators" class="carousel slide">
+      <div class="carousel-indicators">
         <button
-          class="carousel-control-prev"
           type="button"
           data-bs-target="#carouselIndicators"
-          data-bs-slide="prev"
-          [disabled]="currentCard === 0"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselIndicators"
-          data-bs-slide="next"
-          [disabled]="currentCard === items.length - 1"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+          *ngFor="let item of items; let i = index"
+          [attr.data-bs-slide-to]="i"
+          [class.active]="currentCard === i"
+          [attr.aria-label]="'Slide ' + (i + 1)"
+        ></button>
       </div>
+      <div class="carousel-inner">
+        <div
+          class="carousel-item"
+          *ngFor="let item of items; let i = index"
+          [ngClass]="{ active: currentCard === i }"
+        >
+          <p>
+            <strong>{{ item.title }}:</strong> {{ item.description }}
+          </p>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselIndicators"
+        data-bs-slide="prev"
+        [disabled]="currentCard === 0"
+        (click)="prevCard()"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselIndicators"
+        data-bs-slide="next"
+        [disabled]="currentCard === items.length - 1"
+        (click)="nextCard()"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
     </div>
   </div>
 
-  <div class="container__arrow">
+  <div class="d-flex justify-content-center">
     <button
       type="button"
-      class="btn btn-success"
+      class="btn btn-success w-50"
       (click)="navigateToCadastro()"
     >
-      READY?
+      FAÇA SUA CONSULTA
     </button>
   </div>
 </div>

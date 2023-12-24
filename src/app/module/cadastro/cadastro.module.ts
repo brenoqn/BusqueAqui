@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadastroRoutingModule } from './cadastro-routing.module';
 import { CadastroComponent } from './cadastro.component';
+import { NavbarModule } from 'src/app/components/navbar/navbar.module';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { CadastroComponent } from './cadastro.component';
     ReactiveFormsModule,
 
     CadastroRoutingModule,
+    NavbarModule
   ],
   declarations: [CadastroComponent],
 })

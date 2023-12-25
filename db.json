@@ -1,6 +1,7 @@
 {
   "enderecos": [
     {
+      "id": 1,
       "bairro": "Vigilato Pereira",
       "cep": "38408-628",
       "complemento": "",
@@ -11,9 +12,12 @@
       "logradouro": "Rua Pedro Formoso",
       "siafi": "5403",
       "uf": "MG",
-      "numero": "435"
+      "numero": "435",
+      "categoria": "Casa",
+      "editando": false
     },
     {
+      "id": 2,
       "cep": "38412-192",
       "logradouro": "Rua dos Alecrins",
       "complemento": "Fundos",
@@ -24,7 +28,9 @@
       "gia": "",
       "ddd": "34",
       "siafi": "5403",
-      "numero": "268"
+      "numero": "268",
+      "categoria": "Casa",
+      "editando": false
     }
   ]
 }

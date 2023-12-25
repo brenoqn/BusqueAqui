@@ -18,4 +18,15 @@ export class EnderecosService {
   postEndereco(endereco: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/enderecos`, endereco);
   }
+
+  apagarEndereco(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/enderecos/${id}`);
+  }
+
+  atualizarEndereco(endereco: Enderecos): Observable<any> {
+    return this.http.put<any>(
+      `${this.baseUrl}/enderecos/${endereco.id}`,
+      endereco
+    );
+  }
 }

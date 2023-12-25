@@ -6,153 +6,155 @@
   <div class="d-flex flex-column justify-content-center p-2 w-100">
     <div class="card d-flex" style="width: 100% !important">
       <div class="card-body">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Categoria</th>
-              <th scope="col">CEP</th>
-              <th scope="col">Logradouro</th>
-              <th scope="col">Número</th>
-              <th scope="col">Bairro</th>
-              <th scope="col">Complemento</th>
-              <th scope="col">Localidade</th>
-              <th scope="col">UF</th>
-              <th scope="col">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let endereco of enderecos; let i = index">
-              <ng-container *ngIf="!endereco.editando; else editMode">
-                <td>{{ endereco.categoria }}</td>
-                <td>{{ endereco.cep }}</td>
-                <td>{{ endereco.logradouro }}</td>
-                <td>{{ endereco.numero }}</td>
-                <td>{{ endereco.bairro }}</td>
-                <td>{{ endereco.complemento }}</td>
-                <td>{{ endereco.localidade }}</td>
-                <td>{{ endereco.uf }}</td>
-                <td class="d-flex gap-2" style="padding: 1.07rem !important">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-sm"
-                    (click)="editarEndereco(endereco)"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-danger btn-sm"
-                    (click)="apagarEndereco(endereco)"
-                  >
-                    Apagar
-                  </button>
-                </td>
-              </ng-container>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Categoria</th>
+                <th scope="col">CEP</th>
+                <th scope="col">Logradouro</th>
+                <th scope="col">Número</th>
+                <th scope="col">Bairro</th>
+                <th scope="col">Complemento</th>
+                <th scope="col">Localidade</th>
+                <th scope="col">UF</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let endereco of enderecos; let i = index">
+                <ng-container *ngIf="!endereco.editando; else editMode">
+                  <td>{{ endereco.categoria }}</td>
+                  <td>{{ endereco.cep }}</td>
+                  <td>{{ endereco.logradouro }}</td>
+                  <td>{{ endereco.numero }}</td>
+                  <td>{{ endereco.bairro }}</td>
+                  <td>{{ endereco.complemento }}</td>
+                  <td>{{ endereco.localidade }}</td>
+                  <td>{{ endereco.uf }}</td>
+                  <td class="d-flex gap-2" style="padding: 1.07rem !important">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-sm"
+                      (click)="editarEndereco(endereco)"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-sm"
+                      (click)="apagarEndereco(endereco)"
+                    >
+                      Apagar
+                    </button>
+                  </td>
+                </ng-container>
 
-              <ng-template #editMode>
-                <td>
-                  <div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="categoria"
-                      [(ngModel)]="endereco.categoria"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cep"
-                      [(ngModel)]="endereco.cep"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="logradouro"
-                      [(ngModel)]="endereco.logradouro"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="numero"
-                      [(ngModel)]="endereco.numero"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="bairro"
-                      [(ngModel)]="endereco.bairro"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="complemento"
-                      [(ngModel)]="endereco.complemento"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="localidade"
-                      [(ngModel)]="endereco.localidade"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="uf"
-                      [(ngModel)]="endereco.uf"
-                    />
-                  </div>
-                </td>
-                <td
-                  class="d-flex gap-2 p-2"
-                  style="padding: 1.05rem !important"
-                >
-                  <button
-                    type="button"
-                    class="btn btn-success btn-sm"
-                    (click)="salvarEdicao(endereco)"
+                <ng-template #editMode>
+                  <td>
+                    <div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="categoria"
+                        [(ngModel)]="endereco.categoria"
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="cep"
+                        [(ngModel)]="endereco.cep"
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="logradouro"
+                        [(ngModel)]="endereco.logradouro"
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="numero"
+                        [(ngModel)]="endereco.numero"
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="bairro"
+                        [(ngModel)]="endereco.bairro"
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="complemento"
+                        [(ngModel)]="endereco.complemento"
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="localidade"
+                        [(ngModel)]="endereco.localidade"
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="uf"
+                        [(ngModel)]="endereco.uf"
+                      />
+                    </div>
+                  </td>
+                  <td
+                    class="d-flex gap-2 p-2"
+                    style="padding: 1.05rem !important"
                   >
-                    Salvar
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-secondary btn-sm"
-                    (click)="cancelarEdicao(i)"
-                  >
-                    Cancelar
-                  </button>
-                </td>
-              </ng-template>
-            </tr>
-          </tbody>
-        </table>
+                    <button
+                      type="button"
+                      class="btn btn-success btn-sm"
+                      (click)="salvarEdicao(endereco)"
+                    >
+                      Salvar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-sm"
+                      (click)="cancelarEdicao(i)"
+                    >
+                      Cancelar
+                    </button>
+                  </td>
+                </ng-template>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

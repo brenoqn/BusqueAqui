@@ -1,22 +1,32 @@
-::ng-deep {
-  .bg-body-tertiary {
-    background-color: #a1bd8f !important;
-  }
+:host {
+  ::ng-deep {
+    .bg-body-tertiary {
+      background-color: #a1bd8f !important;
+    }
 
-  .border-bottom {
-    padding: 0 1rem;
-  }
+    .border-bottom {
+      padding: 0 1rem;
+    }
 
-  .img {
-    margin-right: 0;
-    margin-bottom: -7rem;
-  }
+    .img {
+      margin-right: 0;
+      margin-bottom: -7rem;
+    }
 
-  .navbar-brand {
-    margin-right: 0;
-  }
+    .navbar-brand {
+      margin-right: 0;
+    }
 
-  .navbar-nav {
-    margin-right: 10rem;
+    .navbar-nav {
+      margin-right: 10rem;
+    }
+
+    .navbar-nav .nav-link {
+      padding: 0.5rem 1rem;
+      color: #FFFFFF;
+      font-size: 26px;
+      display: flex;
+      justify-content: end;
+    }
   }
 }

@@ -13,49 +13,27 @@ export class ListaComponent implements OnInit {
   constructor(private service: EnderecosService) {}
 
   ngOnInit() {
-    this.enderecos = [
-      {
-        bairro: 'Vigilato Pereira',
-        cep: '38408-628',
-        complemento: '',
-        ddd: '34',
-        gia: '',
-        ibge: '3170206',
-        localidade: 'Uberlândia',
-        logradouro: 'Rua Pedro Formoso',
-        siafi: '5403',
-        uf: 'MG',
-        numero: '435',
-        categoria: 'Casa'
+    this.service.getEnderecos().subscribe({
+      next: (res: any) => {
+        this.enderecos = res;
       },
-      {
-        cep: '38412-192',
-        logradouro: 'Rua dos Alecrins',
-        complemento: 'Fundos',
-        bairro: 'Cidade Jardim',
-        localidade: 'Uberlândia',
-        uf: 'MG',
-        ibge: '3170206',
-        gia: '',
-        ddd: '34',
-        siafi: '5403',
-        numero: '268',
-        categoria: 'Casa'
+      error: (err) => {
+        console.error(err);
       },
-    ];
-    console.log('this.enderecos', this.enderecos);
-    // this.service.getEnderecos().subscribe({
-    //   next: (res: any) => {},
-    //   error: (err) => {
-    //     console.error(err);
-    //   },
-    // });
+    });
   }
 
-
   apagarEndereco(endereco: Enderecos) {
-    // Implemente a lógica para apagar o endereço
-    console.log('Apagar endereço:', endereco);
+    this.service.apagarEndereco(endereco.id).subscribe({
+      next: () => {
+        this.enderecos = this.enderecos.filter(
+          (item) => item.id !== endereco.id
+        );
+      },
+      error: (err) => {
+        console.error('Erro ao apagar endereço:', err);
+      },
+    });
   }
 
   editarEndereco(endereco: Enderecos) {
@@ -71,7 +49,14 @@ export class ListaComponent implements OnInit {
   }
 
   salvarEdicao(endereco: Enderecos) {
-    console.log('Salvar endereço:', endereco);
     endereco.editando = false;
+    this.service.atualizarEndereco(endereco).subscribe({
+      next: () => {
+        console.log('Endereço atualizado com sucesso!');
+      },
+      error: (err) => {
+        console.error('Erro ao atualizar endereço:', err);
+      },
+    });
   }
 }

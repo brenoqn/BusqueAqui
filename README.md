@@ -16,6 +16,7 @@ Para executar este projeto localmente, é necessário ter instalado:
 ## Servidor de Desenvolvimento
 
 Execute ng serve para um servidor de desenvolvimento. Navegue até http://localhost:4200/. A aplicação será recarregada automaticamente se você modificar algum dos arquivos de origem.
+
 Execute json-server --watch db.json para um servidor local. Navegue até  http://localhost:3000. A aplicação será recarregada automaticamente se você modificar algum dos arquivos de origem.
 
 ## Construção

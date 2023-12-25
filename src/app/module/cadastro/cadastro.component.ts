@@ -26,26 +26,12 @@ export class CadastroComponent implements OnInit {
       cep: ['', [Validators.required, Validators.pattern('^[0-9]{8}$')]],
       numero: [''],
       complemento: [''],
-      categoria: ['casa'],
-      outraCategoria: [''],
-    });
-    this.listenCategoriaChanges();
-  }
-
-  listenCategoriaChanges() {
-    this.enderecoForm.get('categoria')?.valueChanges.subscribe((categoria) => {
-      if (categoria === 'outros') {
-        this.enderecoForm.get('outraCategoria');
-      } else {
-        this.enderecoForm.get('outraCategoria')?.clearValidators();
-      }
-      this.enderecoForm.get('outraCategoria')?.updateValueAndValidity();
+      categoria: [''],
     });
   }
 
   buscarEndereco() {
     const cep = this.enderecoForm.get('cep')?.value;
-    this.limparCamposEndereco();
     if (this.enderecoForm.get('cep')?.valid) {
       this.service.getCep(cep).subscribe({
         next: (res: Enderecos) => {
@@ -62,8 +48,9 @@ export class CadastroComponent implements OnInit {
 
   salvarEndereco() {
     if (this.enderecoForm.valid) {
-      const numero = this.enderecoForm.get('numero')?.value;
-      const complemento = this.enderecoForm.get('complemento')?.value;
+      let numero = this.enderecoForm.get('numero')?.value;
+      let complemento = this.enderecoForm.get('complemento')?.value;
+      let categoria = this.enderecoForm.get('categoria')?.value;
 
       const novoEndereco: Enderecos = {
         logradouro: this.endereco.logradouro || '',
@@ -77,6 +64,7 @@ export class CadastroComponent implements OnInit {
         gia: this.endereco.gia || '',
         ibge: this.endereco.ibge || '',
         siafi: this.endereco.siafi || '',
+        categoria: categoria || ''
       };
 
       this.enderecoService.postEndereco(novoEndereco).subscribe({
@@ -91,9 +79,5 @@ export class CadastroComponent implements OnInit {
     } else {
       console.log('Formulário inválido. Preencha corretamente.');
     }
-  }
-
-  limparCamposEndereco() {
-    this.endereco = {};
   }
 }

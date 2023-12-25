@@ -10,4 +10,6 @@ export class Enderecos {
   siafi?: string;
   uf?: string;
   numero?: string;
+  categoria?: string;
+  editando?: boolean;
 }

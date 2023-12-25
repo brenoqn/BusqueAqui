@@ -11,7 +11,11 @@ export class HomeComponent implements OnInit {
   items = [
     {
       title: 'Consulta de CEP',
-      description: 'Para cadastrar endereços e suas classificações.',
+      description: 'Ao consultar o CEP você fica aberto a novas possibilidades.',
+    },
+    {
+      title: 'Cadastro de Endereço',
+      description: 'Você pode cadastrar o endereço pra futuras buscas.',
     },
     {
       title: 'Classificação',

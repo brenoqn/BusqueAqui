@@ -1,12 +1,17 @@
-<div class="container d-flex flex-column justify-content-center p-2 gap-2">
+<div
+  class="container-fluid d-flex flex-column justify-content-start p-1 h-100"
+  style="background-color: #a1bd8f"
+>
   <div class="d-flex justify-content-center">
-    <img src="../../../assets/icons/logo.svg" class="img" alt="" />
+    <div class="image-container">
+      <img src="../../../assets/icons/logo.svg" class="img img-fluid" alt="" />
+    </div>
   </div>
 
   <h4 class="text-center">COMO FUNCIONA?</h4>
 
-  <div class="d-flex justify-content-center">
-    <div id="carouselIndicators" class="carousel slide">
+  <div class="d-flex justify-content-center text-center">
+    <div id="carouselIndicators" class="carousel slide w-100" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button
           type="button"
@@ -56,7 +61,7 @@
   <div class="d-flex justify-content-center">
     <button
       type="button"
-      class="btn btn-success w-50"
+      class="btn btn-success w-80"
       (click)="navigateToCadastro()"
     >
       FAÇA SUA CONSULTA

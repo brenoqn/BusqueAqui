@@ -15,7 +15,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de dese
 
 ## Ambiente 
 
-Acesse a URL do projeto em (https://teste-quiz.vercel.app/quiz).
+Acesse a URL do projeto em (https://busque-aqui.vercel.app/home).
 
 Acesse o banco de dados json do projeto em (https://crud-enderecos.onrender.com/).
 
@@ -30,7 +30,7 @@ git clone https://github.com/brenoqn/BusqueAqui.git
 Navegue até o diretório do projeto:
 
 ```
-cd teste-quiz
+cd BusqueAqui
 ```
 
 Instale as dependências do projeto utilizando o npm (gerenciador de pacotes do Node.js):

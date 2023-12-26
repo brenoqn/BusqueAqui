@@ -35,7 +35,7 @@ describe('EnderecosService', () => {
       expect(enderecos).toEqual(mockEnderecos);
     });
 
-    const req = httpMock.expectOne('http://localhost:3000/enderecos');
+    const req = httpMock.expectOne('https://crud-enderecos.onrender.com/enderecos');
     expect(req.request.method).toBe('GET');
     req.flush(mockEnderecos);
   });
@@ -47,7 +47,7 @@ describe('EnderecosService', () => {
       expect(res).toEqual(mockEndereco);
     });
 
-    const req = httpMock.expectOne('http://localhost:3000/enderecos');
+    const req = httpMock.expectOne('https://crud-enderecos.onrender.com/enderecos');
     expect(req.request.method).toBe('POST');
     req.flush(mockEndereco);
   });
@@ -59,7 +59,7 @@ describe('EnderecosService', () => {
       expect(res).toBeTruthy();
     });
 
-    const req = httpMock.expectOne(`http://localhost:3000/enderecos/${id}`);
+    const req = httpMock.expectOne(`https://crud-enderecos.onrender.com/enderecos/${id}`);
     expect(req.request.method).toBe('DELETE');
     req.flush({});
   });
@@ -71,7 +71,7 @@ describe('EnderecosService', () => {
       expect(res).toEqual(mockEndereco);
     });
 
-    const req = httpMock.expectOne(`http://localhost:3000/enderecos/${mockEndereco.id}`);
+    const req = httpMock.expectOne(`https://crud-enderecos.onrender.com/enderecos/${mockEndereco.id}`);
     expect(req.request.method).toBe('PUT');
     req.flush(mockEndereco);
   });

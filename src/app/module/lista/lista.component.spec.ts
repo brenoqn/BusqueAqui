@@ -1,69 +1,80 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 import { ListaComponent } from './lista.component';
-import { Enderecos } from 'src/app/services/enderecos';
 import { EnderecosService } from 'src/app/services/enderecos.service';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { NavbarModule } from 'src/app/components/navbar/navbar.module';
 
 describe('ListaComponent', () => {
   let component: ListaComponent;
   let fixture: ComponentFixture<ListaComponent>;
-  let enderecosService: EnderecosService;
-  let httpMock: HttpTestingController;
+  let mockEnderecosService: jasmine.SpyObj<EnderecosService>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    mockEnderecosService = jasmine.createSpyObj('EnderecosService', [
+      'getEnderecos',
+      'apagarEndereco',
+      'atualizarEndereco',
+    ]);
+
+    await TestBed.configureTestingModule({
       declarations: [ListaComponent],
-      imports: [HttpClientTestingModule],
-      providers: [EnderecosService],
+      imports: [NavbarModule],
+      providers: [
+        { provide: EnderecosService, useValue: mockEnderecosService },
+      ],
     }).compileComponents();
-
-    enderecosService = TestBed.inject(EnderecosService);
-    httpMock = TestBed.inject(HttpTestingController);
-  }));
+  });
 
   beforeEach(() => {
+    mockEnderecosService.getEnderecos.and.returnValue(of([]));
     fixture = TestBed.createComponent(ListaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  afterEach(() => {
-    httpMock.verify();
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
-  it('should remove an address', () => {
-    const endereco: Enderecos = { id: 1 };
-    component.enderecos = [endereco];
-    component.apagarEndereco(endereco);
-    expect(component.enderecos.length).toBe(0);
+  it('should remove endereco on apagarEndereco', () => {
+    const initialEnderecos = [
+      { id: 1, logradouro: 'Endereco 1' },
+      { id: 2, logradouro: 'Endereco 2' },
+    ];
+    component.enderecos = initialEnderecos;
+    mockEnderecosService.apagarEndereco.and.returnValue(of(null));
+    component.apagarEndereco({ id: 1, logradouro: 'Endereco 1' });
+    expect(component.enderecos.length).toBe(1);
+    expect(component.enderecos).toEqual([initialEnderecos[1]]);
   });
 
-  it('should set editing mode for an address', () => {
-    const endereco: Enderecos = { id: 1 };
+  it('should set editando to true on editarEndereco', () => {
+    let endereco = { id: 1, logradouro: 'Endereco 1', editando: false };
     component.editarEndereco(endereco);
-    expect(endereco.editando).toBe(true);
+    expect(endereco.editando).toBeTrue();
   });
 
-  it('should toggle editing mode for an address', () => {
-    const endereco: Enderecos = { id: 1, editando: false };
+  it('should toggle editando on alternarModoEdicao', () => {
+    component.enderecos = [
+      { id: 1, logradouro: 'Endereco 1', editando: false },
+    ];
     component.alternarModoEdicao(0);
-    expect(endereco.editando).toBe(true);
-    component.alternarModoEdicao(0);
-    expect(endereco.editando).toBe(false);
+    expect(component.enderecos[0].editando).toBeTrue();
   });
 
-  it('should cancel editing mode for an address', () => {
-    const endereco: Enderecos = { id: 1, editando: true };
+  it('should set editando to false on cancelarEdicao', () => {
+    component.enderecos = [{ id: 1, logradouro: 'Endereco 1', editando: true }];
     component.cancelarEdicao(0);
-    expect(endereco.editando).toBe(false);
+    expect(component.enderecos[0].editando).toBeFalse();
   });
 
-  it('should save changes for an address', () => {
-    const endereco: Enderecos = { id: 1, editando: true };
+  it('should update endereco on salvarEdicao', () => {
+    let endereco = { id: 1, logradouro: 'Endereco 1', editando: true };
+    mockEnderecosService.atualizarEndereco.and.returnValue(of(null));
     component.salvarEdicao(endereco);
-    expect(endereco.editando).toBe(false);
+    expect(endereco.editando).toBeFalse();
+    expect(mockEnderecosService.atualizarEndereco).toHaveBeenCalledWith(
+      endereco
+    );
   });
 });

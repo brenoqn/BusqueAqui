@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     },
     {
       title: 'Cadastro de Endereço',
-      description: 'Você pode cadastrar o endereço pra futuras buscas.',
+      description: 'Você pode cadastrar o endereço para futuras buscas.',
     },
     {
       title: 'Classificação',

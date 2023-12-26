@@ -8,21 +8,60 @@ O projeto consiste em um sistema de cadastro de CEP, com o objetivo de gerenciar
 
 ## Pré-requisitos
 
-Para executar este projeto localmente, é necessário ter instalado:
+Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
 
-- Angular : npm install -g @angular/cli@15.2.6
-- Json-Server: npm install -g json-server
+* Node.js (versão 12 ou superior)
+* Angular CLI (15 ou superior)
 
-## Servidor de Desenvolvimento
+## Ambiente 
 
-Execute ng serve para um servidor de desenvolvimento. Navegue até http://localhost:4200/. A aplicação será recarregada automaticamente se você modificar algum dos arquivos de origem.
+Acesse a URL do projeto em (https://teste-quiz.vercel.app/quiz).
+Acesse o banco de dados json do projeto em (https://crud-enderecos.onrender.com/).
 
-Execute json-server --watch db.json para um servidor local. Navegue até  http://localhost:3000. A aplicação será recarregada automaticamente se você modificar algum dos arquivos de origem.
+## Iniciando o projeto
 
-## Construção
+Clone este repositório para o diretório desejado em sua máquina:
 
-Execute ng build para construir o projeto. Os artefatos de build serão armazenados no diretório dist/..
+```
+git clone https://github.com/brenoqn/BusqueAqui.git
+```
 
-## Executando Testes Unitários
+Navegue até o diretório do projeto:
 
-Execute ng test para executar os testes unitários via Karma.
+```
+cd teste-quiz
+```
+
+Instale as dependências do projeto utilizando o npm (gerenciador de pacotes do Node.js):
+
+```
+npm install
+```
+
+Para iniciar o servidor de desenvolvimento, execute:
+
+```
+ng serve
+```
+
+O servidor estará disponível no endereço http://localhost:4200/.
+
+## Testes Unitários
+
+O projeto foi desenvolvido e projetado com cobertura de testes unitários em Jasmine com um coverage de pelo menos 85% ou mais em todos os COMPONENTES.
+
+![image](https://github.com/brenoqn/BusqueAqui/assets/98334393/083de1e7-6490-4d05-a51e-e4f7db1384b0)
+
+Para executar os testes e mostrar o coverage utilize o comando:
+
+```
+ng test --code-coverage
+```
+
+## Comandos úteis
+
+Aqui estão alguns comandos úteis que você pode utilizar durante o desenvolvimento do projeto:
+
+* ng serve: Inicia o servidor de desenvolvimento em http://localhost:4200/.
+* ng build: Compila o projeto para produção. Os arquivos de saída serão gerados no diretório dist/.
+* ng test: Executa os testes unitários do projeto.

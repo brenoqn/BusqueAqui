@@ -9,6 +9,8 @@ import { EnderecosService } from 'src/app/services/enderecos.service';
 })
 export class ListaComponent implements OnInit {
   enderecos: Enderecos[] = [];
+  sucess: boolean = false;
+  delete: boolean = false;
 
   constructor(private service: EnderecosService) {}
 
@@ -29,6 +31,7 @@ export class ListaComponent implements OnInit {
         this.enderecos = this.enderecos.filter(
           (item) => item.id !== endereco.id
         );
+        this.delete = true;
       },
       error: (err) => {
         console.error('Erro ao apagar endereço:', err);
@@ -52,7 +55,7 @@ export class ListaComponent implements OnInit {
     endereco.editando = false;
     this.service.atualizarEndereco(endereco).subscribe({
       next: () => {
-        console.log('Endereço atualizado com sucesso!');
+        this.sucess = true;
       },
       error: (err) => {
         console.error('Erro ao atualizar endereço:', err);

@@ -13,6 +13,7 @@ import { ViaCepService } from 'src/app/services/via-cep.service';
 export class CadastroComponent implements OnInit {
   enderecoForm!: FormGroup;
   endereco: Enderecos = {};
+  sucess: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -41,8 +42,6 @@ export class CadastroComponent implements OnInit {
           console.error(err);
         },
       });
-    } else {
-      console.log('CEP inválido. Preencha corretamente.');
     }
   }
 
@@ -64,20 +63,20 @@ export class CadastroComponent implements OnInit {
         gia: this.endereco.gia || '',
         ibge: this.endereco.ibge || '',
         siafi: this.endereco.siafi || '',
-        categoria: categoria || ''
+        categoria: categoria || '',
       };
 
       this.enderecoService.postEndereco(novoEndereco).subscribe({
-        next: (res) => {
-          console.log('Endereço adicionado com sucesso!', res);
-          this.router.navigate(['/lista']);
+        next: () => {
+          this.sucess = true;
+          setTimeout(() => {
+            this.router.navigate(['/lista']);
+          }, 3000);
         },
         error: (err) => {
           console.error('Erro ao adicionar endereço:', err);
         },
       });
-    } else {
-      console.log('Formulário inválido. Preencha corretamente.');
     }
   }
 }

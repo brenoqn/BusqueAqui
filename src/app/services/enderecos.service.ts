@@ -7,7 +7,7 @@ import { Enderecos } from './enderecos';
   providedIn: 'root',
 })
 export class EnderecosService {
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'https://crud-enderecos.onrender.com';
 
   constructor(private http: HttpClient) {}
 

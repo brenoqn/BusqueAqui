@@ -46,6 +46,7 @@ export class CadastroComponent implements OnInit {
   }
 
   salvarEndereco() {
+    console.log("Método salvarEndereco chamado");
     if (this.enderecoForm.valid) {
       let numero = this.enderecoForm.get('numero')?.value;
       let complemento = this.enderecoForm.get('complemento')?.value;

@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarModule } from 'src/app/components/navbar/navbar.module';
+import { SharedButtonModule } from 'src/app/components/shared-button/shared-button.module';
 import { CadastroRoutingModule } from './cadastro-routing.module';
 import { CadastroComponent } from './cadastro.component';
-import { NavbarModule } from 'src/app/components/navbar/navbar.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { NavbarModule } from 'src/app/components/navbar/navbar.module';
     ReactiveFormsModule,
 
     CadastroRoutingModule,
-    NavbarModule
+    NavbarModule,
+    SharedButtonModule,
   ],
   declarations: [CadastroComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -23,9 +23,10 @@
             formControlName="cep"
             placeholder="Digite o CEP"
           />
-          <button type="submit" class="btn btn-success search">
-            <i class="bi bi-search"></i>
-          </button>
+          <app-shared-button
+          icon="bi bi-search"
+          (buttonClick)="buscarEndereco()"
+        ></app-shared-button>
         </div>
       </form>
     </div>
@@ -117,11 +118,11 @@
                   id="categoria"
                   formControlName="categoria"
                 >
-                  <option value="casa">Casa</option>
-                  <option value="trabalho">Trabalho</option>
-                  <option value="academia">Academia</option>
-                  <option value="igreja">Igreja</option>
-                  <option value="outros">Outros</option>
+                  <option value="Casa">Casa</option>
+                  <option value="Trabalho">Trabalho</option>
+                  <option value="Academia">Academia</option>
+                  <option value="Igreja">Igreja</option>
+                  <option value="Outros">Outros</option>
                 </select>
               </div>
             </form>
